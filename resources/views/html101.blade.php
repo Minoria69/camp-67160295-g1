@@ -106,3 +106,30 @@
 </body>
 </html>
 
+<script>
+document.getElementById('workshopForm').addEventListener('submit', function(event) {
+    // ป้องกันไม่ให้ฟอร์มส่งข้อมูลไปทันทีถ้ายังตรวจไม่เสร็จ
+    event.preventDefault();
+
+    // ดึงค่าจากฟิลด์ต่างๆ
+    const fname = document.getElementById('firstname').value;
+    const lname = document.getElementById('lastname').value;
+    const bday = document.getElementById('birthday').value;
+    const age = document.getElementById('age').value;
+    const agree = document.getElementById('agreement').checked;
+
+    // ตรวจสอบเงื่อนไข (ตัวอย่าง: ห้ามว่าง)
+    if (fname === "" || lname === "" || bday === "" || age === "" || !agree) {
+        alert("กรุณากรอกข้อมูลให้ครบทุกช่องและกดยอมรับเงื่อนไข!");
+        // แสดงข้อความ Error บนหน้าจอ (ถ้ามี div รองรับ)
+        document.getElementById('errorMessage').style.display = 'block';
+    } else {
+        alert("บันทึกข้อมูลสำเร็จ (Pass)!");
+        document.getElementById('errorMessage').style.display = 'none';
+        
+        // หากต้องการส่งข้อมูลจริง ให้ใช้:
+        // this.submit(); 
+    }
+});
+</script>
+
