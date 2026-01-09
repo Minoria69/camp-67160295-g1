@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pokedex;
 
 class PokedexsController extends Controller
 {
@@ -12,7 +13,11 @@ class PokedexsController extends Controller
     public function index()
     {
         //
-        return view ('pokedexs.index');
+        // 1. ดึงข้อมูลจาก Model
+        $pokedexs = Pokedex::all();
+
+        // 2. ส่งตัวแปรไปที่ view (ต้องมั่นใจว่าชื่อตัวแปรใน compact ตรงกับใน blade)
+        return view('pokedexs.index', compact('pokedexs'));
     }
 
     /**
