@@ -21,19 +21,14 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse($pokedexs as $pokemon)
+
                 <tr style="border-bottom: 1px solid #eee;">
                     <td style="padding: 12px;">
-                        @if($pokemon->image_url)
-                            <img src="{{ $pokemon->image_url }}" alt="{{ $pokemon->name }}" style="width: 50px; height: 50px; object-fit: contain;">
-                        @else
-                            <span>No Image</span>
-                        @endif
+
+
+
                     </td>
-                    <td style="padding: 12px; font-weight: bold;">{{ $pokemon->name }}</td>
-                    <td style="padding: 12px;"><span style="background: #eee; padding: 4px 8px; border-radius: 4px;">{{ $pokemon->type }}</span></td>
-                    <td style="padding: 12px;">{{ $pokemon->species }}</td>
-                    <td style="padding: 12px;">
+
                         {{ $pokemon->hp }} / {{ $pokemon->attack }} / {{ $pokemon->defense }}
                     </td>
                     <td style="padding: 12px;">{{ $pokemon->height }}m / {{ $pokemon->weight }}kg</td>
@@ -47,11 +42,11 @@
                         </form>
                     </td>
                 </tr>
-                @empty
+
                 <tr>
                     <td colspan="7" style="padding: 20px; text-align: center;">No Pokemon found.</td>
                 </tr>
-                @endforelse
+
             </tbody>
         </table>
     </div>

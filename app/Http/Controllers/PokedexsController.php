@@ -13,11 +13,10 @@ class PokedexsController extends Controller
     public function index()
     {
         //
-        // 1. ดึงข้อมูลจาก Model
-        $pokedexs = Pokedex::all();
+
 
         // 2. ส่งตัวแปรไปที่ view (ต้องมั่นใจว่าชื่อตัวแปรใน compact ตรงกับใน blade)
-        return view('pokedexs.index', compact('pokedexs'));
+        return view('pokedexs.index');
     }
 
     /**
