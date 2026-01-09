@@ -10,7 +10,7 @@ class PokedexController extends Controller
     public function index()
     {
         $pokedex = Pokedex::all();
-        return view('pokedex.index', compact('pokedex'));
+        return view('pokedexs.index', compact('pokedex'));
     }
 
     public function create()
