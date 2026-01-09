@@ -1,54 +1,50 @@
-@extends('layouts.app') @section('content')
-<div class="container" style="padding: 2rem;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h2>My Pokedex</h2>
-        <a href="{{ route('pokedexs.create') }}" class="btn-add" style="background: #2ecc71; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
-            + Add New Pokemon
-        </a>
-    </div>
-
-    <div style="overflow-x: auto; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-        <table style="width: 100%; border-collapse: collapse; min-width: 800px;">
-            <thead>
-                <tr style="background: #f8f9fa; border-bottom: 2px solid #dee2e6; text-align: left;">
-                    <th style="padding: 12px;">Image</th>
-                    <th style="padding: 12px;">Name</th>
-                    <th style="padding: 12px;">Type</th>
-                    <th style="padding: 12px;">Species</th>
-                    <th style="padding: 12px;">Stats (HP/ATK/DEF)</th>
-                    <th style="padding: 12px;">H/W</th>
-                    <th style="padding: 12px; text-align: center;">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 12px;">
-
-
-
-                    </td>
-
-                        {{ $pokemon->hp }} / {{ $pokemon->attack }} / {{ $pokemon->defense }}
-                    </td>
-                    <td style="padding: 12px;">{{ $pokemon->height }}m / {{ $pokemon->weight }}kg</td>
-                    <td style="padding: 12px; text-align: center;">
-                        <a href="{{ route('pokedex.edit', $pokemon->id) }}" style="color: #3498db; margin-right: 10px; text-decoration: none;">Edit</a>
-
-                        <form action="{{ route('pokedex.destroy', $pokemon->id) }}" method="POST" style="display: inline-block;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" style="background: none; border: none; color: #e74c3c; cursor: pointer;" onclick="return confirm('Delete this Pokemon?')">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td colspan="7" style="padding: 20px; text-align: center;">No Pokemon found.</td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-</div>
-@endsection
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pokedex List</title>
+</head>
+<body>
+    <h1>Pokedex List</h1>
+    <a href="{{ url('/pokedexs/create') }}">Add New Pokemon</a>
+    <hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>type</th>
+                <th>species</th>
+                <th>height</th>
+                <th>weight</th>
+                <th>hp</th>
+                <th>attack</th>
+                <th>defense</th>
+                <th>image_url</th>
+                <th>manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($pokedexs as $pokedex)
+            <tr>
+                <td>{{ $pokedex->name }}</td>
+                <td>{{ $pokedex->type }}</td>
+                <td>{{ $pokedex->species }}</td>
+                <td>{{ $pokedex->height }}</td>
+                <td>{{ $pokedex->weight }}</td>
+                <td>{{ $pokedex->hp }}</td>
+                <td>{{ $pokedex->attack }}</td>
+                <td>{{ $pokedex->defense }}</td>
+                <td><img src="{{ $pokedex->image_url }}" width="80"></td>
+                <td>
+                    <a href="{{ url('/pokedexs/'.$pokedex->id.'/edit') }}">Edit</a>
+                    <form action="{{ url('/pokedexs/'.$pokedex->id) }}" method="POST" style="display:inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</body>
+</html>
