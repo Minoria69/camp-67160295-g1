@@ -2,7 +2,7 @@
 <div class="container" style="padding: 2rem;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h2>My Pokedex</h2>
-        <a href="{{ route('pokedex.create') }}" class="btn-add" style="background: #2ecc71; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+        <a href="{{ route('pokedexs.create') }}" class="btn-add" style="background: #2ecc71; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
             + Add New Pokemon
         </a>
     </div>
@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse($pokedaxs as $pokemon)
+                @forelse($pokedexs as $pokemon)
                 <tr style="border-bottom: 1px solid #eee;">
                     <td style="padding: 12px;">
                         @if($pokemon->image_url)

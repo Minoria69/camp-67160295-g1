@@ -12,7 +12,7 @@ class PokedexsController extends Controller
     public function index()
     {
         //
-        return view ('pokedexs,index');
+        return view ('pokedexs.index');
     }
 
     /**
