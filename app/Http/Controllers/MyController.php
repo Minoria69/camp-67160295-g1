@@ -6,12 +6,9 @@ use Illuminate\Http\Request;
 
 class MyController extends Controller
 {
-    //
-    private $myvalue;
-    protected $myvalue2;
-    public $myval = "";
-
-    function index(){
-        return '<h1>My Controller</h1>'; 
+    public function index()
+    {
+        // คำสั่ง return view('workshop') จะไปดึงไฟล์ใน resources/views/workshop.blade.php มาแสดงผล
+        return view('workshop'); 
     }
 }

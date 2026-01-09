@@ -1,16 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WorkshopController; // ห้ามลืมบรรทัดนี้
+// 1. เพิ่มบรรทัดนี้ด้านบนสุดเพื่อเรียกใช้งาน Controller
+use App\Http\Controllers\MyController; 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Route สำหรับเรียกหน้าฟอร์ม
-Route::get('/workshop', [WorkshopController::class, 'index'])->name('workshop.index');
-
-// Route สำหรับรับข้อมูล
-Route::post('/workshop/store', [WorkshopController::class, 'store'])->name('workshop.store');
-
-Route::get('/workshop/mycontroller', [WorkshopController::class, 'index']);
+// 2. เพิ่ม Route นี้เพื่อให้ URL /workshop/mycontroller ใช้งานได้
+Route::get('/workshop/mycontroller', [MyController::class, 'index']);
