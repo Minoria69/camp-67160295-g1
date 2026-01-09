@@ -10,5 +10,7 @@ Route::get('/', function () {
 // Route สำหรับเรียกหน้าฟอร์ม
 Route::get('/workshop', [WorkshopController::class, 'index'])->name('workshop.index');
 
-// Route สำหรับรับข้อมูล (POST)
+// Route สำหรับรับข้อมูล
 Route::post('/workshop/store', [WorkshopController::class, 'store'])->name('workshop.store');
+
+Route::get('/mycontroller', [App\Http\Controllers\MyController::class, 'index']);
