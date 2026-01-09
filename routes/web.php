@@ -13,4 +13,4 @@ Route::get('/workshop', [WorkshopController::class, 'index'])->name('workshop.in
 // Route สำหรับรับข้อมูล
 Route::post('/workshop/store', [WorkshopController::class, 'store'])->name('workshop.store');
 
-Route::get('/mycontroller', [App\Http\Controllers\MyController::class, 'index']);
+Route::get('/workshop/mycontroller', [WorkshopController::class, 'index']);
