@@ -8,3 +8,6 @@ Route::get('/workshop', [MyController::class, 'index']);
 
 // 2. หน้าสำหรับรับค่าและแสดงผล (POST)
 Route::post('/workshop/store', [MyController::class, 'store'])->name('workshop.store');
+
+
+Route::resource('/flights', App\Http\Controllers\FlightController::class);
